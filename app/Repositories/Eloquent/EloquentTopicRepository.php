@@ -3,12 +3,13 @@
 namespace App\Repositories\Eloquent;
 
 use App\Topic;
+use App\Repositories\RepositoryAbstract;
 use App\Repositories\Contracts\TopicRepository;
 
-class EloquentTopicRepository implements TopicRepository
+class EloquentTopicRepository extends RepositoryAbstract implements TopicRepository
 {
-  public function all()
-  {
-    return Topic::all();
-  }
+    public function entity()
+    {
+      return Topic::class;
+    }
 }

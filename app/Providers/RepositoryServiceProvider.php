@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Repositories\Contracts\TopicRepository;
-use App\Repositories\Eloquent\EloquentTopicRepository;
+use App\Repositories\Contracts\{TopicRepository, UserRepository};
+use App\Repositories\Eloquent\{EloquentTopicRepository, EloquentUserRepository};
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -16,6 +16,8 @@ class RepositoryServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->bind(TopicRepository::class, EloquentTopicRepository::class);
+        $this->app->bind(UserRepository::class, EloquentUserRepository::class);
+
     }
 
     /**
