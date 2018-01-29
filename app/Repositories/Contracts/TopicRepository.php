@@ -9,4 +9,6 @@ interface TopicRepository
   // public function allLive();
 
   // public function allLiveLatest();
+
+  public function findBySlug($slug);
 }

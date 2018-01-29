@@ -22,4 +22,9 @@ class EloquentTopicRepository extends RepositoryAbstract implements TopicReposit
     // {
     //   return $this->entity->where('live', true)->latest()->get();
     // }
+
+    public function findBySlug($slug)
+    {
+      return $this->findWhereFirst('slug', $slug);
+    }
 }
