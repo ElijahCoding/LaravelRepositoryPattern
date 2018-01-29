@@ -21,10 +21,10 @@ class TopicController extends Controller
 
     public function index()
     {
-      $topics = $this->topics->all();
+      $topic = $this->topics->paginate();
 
       // $topics = $this->topics->all();
 
-      dd($topics);
+      dd($topic);
     }
 }
