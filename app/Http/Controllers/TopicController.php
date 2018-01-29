@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\Contracts\UserRepository;
 use App\Repositories\Contracts\TopicRepository;
+use App\Repositories\Eloquent\Criteria\LatestFirst;
 use Illuminate\Http\Request;
 
 class TopicController extends Controller
@@ -21,10 +22,8 @@ class TopicController extends Controller
 
     public function index()
     {
-      $topic = $this->topics->paginate();
+      $topics = $this->topics->withCriteria(new LatestFirst())->all();
 
-      // $topics = $this->topics->all();
-
-      dd($topic);
+      return view('topics.index', compact('topics'));
     }
 }

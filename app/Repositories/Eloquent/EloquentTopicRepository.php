@@ -12,4 +12,14 @@ class EloquentTopicRepository extends RepositoryAbstract implements TopicReposit
     {
       return Topic::class;
     }
+    //
+    // public function allLive()
+    // {
+    //   return $this->entity->where('live', true)->get();
+    // }
+    //
+    // public function allLiveLatest()
+    // {
+    //   return $this->entity->where('live', true)->latest()->get();
+    // }
 }
