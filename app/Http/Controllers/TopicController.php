@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\Contracts\UserRepository;
 use App\Repositories\Contracts\TopicRepository;
+use App\Repositories\Eloquent\Criteria\EagerLoad;
 use App\Repositories\Eloquent\Criteria\LatestFirst;
 use App\Repositories\Eloquent\Criteria\IsLive;
 use App\Repositories\Eloquent\Criteria\ByUser;
@@ -27,8 +28,11 @@ class TopicController extends Controller
       $topics = $this->topics->withCriteria([
         new LatestFirst(),
         new IsLive(),
-        new ByUser(auth()->id())
+        new ByUser(auth()->id()),
+        new EagerLoad(['posts', 'posts.user'])
       ])->paginate();
+
+      // $topics->load(['posts', 'posts.user']); Better to make a Criterion
 
       return view('topics.index', compact('topics'));
     }
