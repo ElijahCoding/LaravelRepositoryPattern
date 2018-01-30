@@ -41,6 +41,10 @@ class TopicController extends Controller
     {
       $topic = $this->topics->withCriteria(new EagerLoad(['posts.user']))->findBySlug($slug);
 
+      // if (!$topic) {
+      //   return abort(404);
+      // }
+
       return view('topics.show', compact('topic'));
     }
 }
