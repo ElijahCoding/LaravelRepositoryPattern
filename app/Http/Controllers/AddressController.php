@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\Contracts\AddressRepository;
+use App\Repositories\Contracts\UserRepository;
 
 class AddressController extends Controller
 {
-    public function index(AddressRepository $addresses)
+    public function index(UserRepository $users)
     {
-      dd($addresses);
+      $users->createAddress(auth()->id(), [
+        'line1' => '123 street'
+      ]);
+      
     }
 }
